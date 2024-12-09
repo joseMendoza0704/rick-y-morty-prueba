@@ -1,4 +1,4 @@
-package com.example.mendo
+package com.example.mendo.ViewModels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -28,7 +28,8 @@ class CharacterDetailViewModel : ViewModel() {
                         // Aquí estamos esperando un solo personaje, no una lista
                         _characterDetail.value = ApiResult.success(response.body())
                     } else {
-                        _characterDetail.value = ApiResult.error("No character found or error: ${response.code()}")
+                        _characterDetail.value =
+                            ApiResult.error("No character found or error: ${response.code()}")
                     }
                 }
 

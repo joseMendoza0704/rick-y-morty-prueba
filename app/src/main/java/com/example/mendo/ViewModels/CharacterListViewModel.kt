@@ -1,13 +1,11 @@
-package com.example.mendo
+package com.example.mendo.ViewModels
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.mendo.models.Character
 import com.example.mendo.models.CharacterList
 import com.example.mendo.network.ApiClient
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

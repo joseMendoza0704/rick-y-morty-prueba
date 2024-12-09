@@ -1,4 +1,4 @@
-package com.example.mendo
+package com.example.mendo.ViewModels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

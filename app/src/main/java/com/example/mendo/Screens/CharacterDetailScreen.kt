@@ -1,6 +1,7 @@
-package com.example.mendo
+package com.example.mendo.Screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
@@ -11,8 +12,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.rememberAsyncImagePainter
+import com.example.mendo.ViewModels.ApiResult
+import com.example.mendo.ViewModels.CharacterDetailViewModel
 
 @Composable
 fun CharacterDetailScreen(characterId: Int) {
@@ -30,7 +33,8 @@ fun CharacterDetailScreen(characterId: Int) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp), // Añadimos padding general
+
+            .background(Color(0xFF1e2838)),
         contentAlignment = Alignment.Center // Centramos todo el contenido vertical y horizontalmente
     ) {
         when (val result = characterDetail) {
@@ -46,7 +50,9 @@ fun CharacterDetailScreen(characterId: Int) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .wrapContentHeight()
-                            .padding(16.dp), // Espacio alrededor de la Card
+                            .padding(16.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFF38761D)),
+                        // Espacio alrededor de la Card
                        // Elevación de la Card para sombra
                         shape = MaterialTheme.shapes.medium // Forma de la Card
                     ) {
@@ -58,7 +64,7 @@ fun CharacterDetailScreen(characterId: Int) {
                         ) {
                             // Imagen del personaje
                             Image(
-                                painter = rememberImagePainter(it.image),
+                                painter = rememberAsyncImagePainter(it.image),
                                 contentDescription = null,
                                 modifier = Modifier
                                     .size(200.dp) // Tamaño de la imagen
@@ -72,22 +78,27 @@ fun CharacterDetailScreen(characterId: Int) {
                             Text(
                                 text = it.name,
                                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
-                                modifier = Modifier.padding(bottom = 8.dp)
-                            )
+                                modifier = Modifier.padding(bottom = 8.dp),
+                                color = Color.White,
+                                )
                             Text(
                                 text = "Species: ${it.species}",
                                 style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                                modifier = Modifier.padding(bottom = 8.dp)
-                            )
+                                modifier = Modifier.padding(bottom = 8.dp),
+                                color = Color.White,
+
+                                )
                             Text(
                                 text = "Status: ${it.status}",
                                 style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                                modifier = Modifier.padding(bottom = 8.dp)
+                                modifier = Modifier.padding(bottom = 8.dp),
+                                color = Color.White,
                             )
                             Text(
                                 text = "Gender: ${it.gender}",
                                 style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
-                                modifier = Modifier.padding(bottom = 8.dp)
+                                modifier = Modifier.padding(bottom = 8.dp),
+                                color = Color.White,
                             )
                         }
                     }

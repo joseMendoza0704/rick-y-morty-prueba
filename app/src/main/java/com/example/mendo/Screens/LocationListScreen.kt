@@ -1,6 +1,7 @@
 // LocationListScreen.kt
-package com.example.mendo
+package com.example.mendo.Screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -49,11 +50,15 @@ fun LocationListScreen() {
     } else if (errorMessage != null) {
         Text(text = "Error: $errorMessage", color = Color.Red, style = MaterialTheme.typography.bodyLarge)
     } else {
-        LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)) {
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF1e2838)),
+            contentPadding = PaddingValues(16.dp)) {
             items(locations) { location ->
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(8.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary)
+                    colors = CardDefaults.cardColors(containerColor = Color(0xFF38761D)),
+                    elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(location.name, style = MaterialTheme.typography.bodyLarge, color = Color.White)
